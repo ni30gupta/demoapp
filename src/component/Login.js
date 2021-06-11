@@ -10,18 +10,26 @@ class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
+
   handleChange(evt) {
     var updatedInput = this.state.input;
     updatedInput.userName = evt.target.value;
     console.log(this.state);
     this.setState({ input: updatedInput });
   }
+
   handlePasswordChange(evt) {
     var updatedInput = this.state.input;
     updatedInput.password = evt.target.value;
     console.log(this.state);
     this.setState({ input: updatedInput });
   }
+
+  validate =(e) => {
+    localStorage.setItem("isAuth", true)
+    // e.preventDefault()
+  }
+
   render() {
     var { userName, password } = this.state.input;
     return (
@@ -79,7 +87,7 @@ class Login extends Component {
                     <input type="checkbox" value="remember-me" /> Remember me
                   </label>
                 </div>
-                <button className="w-100 btn btn-lg btn-primary" type="submit">
+                <button onClick = {this.validate} className="w-100 btn btn-lg btn-primary" type="submit">
                   Login
                 </button>
                 <hr className="my-4" />
